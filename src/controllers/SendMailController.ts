@@ -31,6 +31,27 @@ class SendMailController {
       })
     }
 
+    const variables = {
+      name: user.name,
+      title: survey.title,
+      description: survey.description,
+      user_id: user.id,
+      link: process.env.URL_MAIL
+    }
+    const npsPath = resolve(__dirname, "../views/emails/npsMail.hbs")
+
+    const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
+      where: [
+        {user_id: user.id},
+        {value: null}
+      ]
+    })
+    // caso a pesquisa ja exista, enviar essa pesquisa
+    if(surveyUserAlreadyExists) {
+      await SendMailService.execute(email, survey.title, variables, npsPath)
+      return res.json(surveyUserAlreadyExists)
+    }
+
     // salvar as informações na tabela surveyuser
     const surveyUser = surveysUsersRepository.create({
       user_id: user.id,
@@ -40,13 +61,6 @@ class SendMailController {
 
     // enviar email para o usuario
 
-    const npsPath = resolve(__dirname, "../views/emails/npsMail.hbs")
-
-    const variables = {
-      name: user.name,
-      title: survey.title,
-      description: survey.description
-    }
 
     await SendMailService.execute(email, survey.title, variables, npsPath)
 
