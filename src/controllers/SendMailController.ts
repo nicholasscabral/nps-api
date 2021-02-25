@@ -44,7 +44,8 @@ class SendMailController {
       where: [
         {user_id: user.id},
         {value: null}
-      ]
+      ],
+      relations: ["user", "survey"]
     })
     // caso a pesquisa ja exista, enviar essa pesquisa
     if(surveyUserAlreadyExists) {
