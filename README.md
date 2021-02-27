@@ -16,10 +16,10 @@
  <div align="center">
   
   [Technologies](#construction_worker-built-with) | 
-  [Installing](#-arrow_down-installing) |
+  [Installing](#arrow_down-installing) |
   [Configuring](#gear-configuring) | 
   [How to run](#triangular_flag_on_post-usage) |
-  [Tests](#-heavy_check_mark-tests) |
+  [Tests](#heavy_check_mark-tests) |
   [License](#label-license)
    
  </div>
@@ -86,7 +86,7 @@
   | /nps/:survey_id  | GET  | survey_id as url parameter  | Show survey NPS  |
  ---
   ### Requests
-  <li>* ´POST /users´</li>
+  * `POST /users`
   <br>
   <p>Request body</p>
 
@@ -97,7 +97,7 @@
  }
   ```
  ---
-  <li>* `POST /surveys`</li>
+ * `POST /surveys`
   <br>
   <p>Request body</p>
 
@@ -108,7 +108,7 @@
   }
   ```
   ---
-  <li>* `POST /sendMail`</li>
+  * `POST /sendMail`
   <br>
   <p>Request body</p>
 
